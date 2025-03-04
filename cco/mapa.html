@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapas</title>
+    <link rel="shortcut icon" href="../imagens/Logo_ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="mapa.css">
+</head>
+
+<body>
+    <div>
+        <form>
+            <label for="menu">Selecione o Patio:</label>
+            <select id="menu" name="menu" onchange="showMap()">
+                <option value="" disabled="" selected="" hidden=""></option>
+                <option value="ARARAQUARA">ARARAQUARA</option>
+                <option value="BARRETOS">BARRETOS</option>
+                <option value="BOTUCATU">BOTUCATU</option>
+                <option value="CABRALIA">CABRALIA</option>
+                <option value="DRACENA">DRACENA</option>
+                <option value="GUARARAPES">GUARARAPES</option>
+                <option value="JAÚ">JAÚ</option>
+                <option value="MARILIA">MARILIA</option>
+                <option value="OURINHOS">OURINHOS</option>
+                <option value="PRESIDENTE PRUDENTE">PRESIDENTE PRUDENTE</option>
+                <option value="SANTANA">SANTANA</option>
+                <option value="SJ. DO RIO PRETO">SJ. DO RIO PRETO</option>
+                <option value="SOROCABA">SOROCABA</option>
+                <option value="TEODORO SAMPAIO">TEODORO SAMPAIO</option>
+                <option value="UBATUBA">UBATUBA</option>
+            </select>
+            <a href="../index.html">Voltar</a>
+        </form>
+    </div>
+
+    <div id="mapContainer">
+
+    </div>
+
+    <span>Dados não atualizados</span>
+
+
+
+    <script>
+        var mapURLs = {
+            "ARARAQUARA": "https://www.google.com/maps/d/embed?mid=1DHSIn8Vmme3PeKDWLOYRb0pzLxSMBXc&ehbc=2E312F",
+            "BARRETOS": "https://www.google.com/maps/d/embed?mid=1IeT3x3iT4fCfjzR-z51XJO0vLlbsUKU&ehbc=2E312F",
+            "BOTUCATU": "https://www.google.com/maps/d/embed?mid=1g_zWH3OXSRma54iKeKK_f5FXbuJxP1w&ehbc=2E312F",
+            "CABRALIA": "https://www.google.com/maps/d/embed?mid=1eaBcrMFhLz_hTkvOwGz0YWUw1heHjos&hl=pt-BR&ehbc=2E312F",
+            "DRACENA": "https://www.google.com/maps/d/embed?mid=1IiKgQ897NfBa-W68tuWIDapJhht1UfU&ehbc=2E312F",
+            "GUARARAPES": "https://www.google.com/maps/d/embed?mid=1ji8_ajDGxUo9PVjrUeNzToqmqLVHk4c&ehbc=2E312F",
+            "JAÚ": "https://www.google.com/maps/d/embed?mid=1s3BfBnr91WYOnHb6ziEcH8yVl-1DUsA&ehbc=2E312F",
+            "MARILIA": "https://www.google.com/maps/d/embed?mid=1s_owlBVB2-AKBAte2AGpxHMTQEkerwk&ehbc=2E312F",
+            "OURINHOS": "https://www.google.com/maps/d/embed?mid=1KEcuT0HJi-SYLQsjLde9ty4W8mU7g-4&ehbc=2E312F",
+            "PRESIDENTE PRUDENTE": "https://www.google.com/maps/d/embed?mid=1H3bxFx-kfWBqzbfZDRgCU7i88geK5Mk&ehbc=2E312F",
+            "SANTANA": "https://www.google.com/maps/d/embed?mid=1npaa4CLuBZYh0z_Gl3YMLbNbXyFuwGE&hl=pt-BR&ehbc=2E312F",
+            "SJ. DO RIO PRETO": "https://www.google.com/maps/d/embed?mid=193SoD2_8UsqOy1Ca_oboG4xQKlL-OGI&ehbc=2E312F",
+            "SOROCABA": "https://www.google.com/maps/d/embed?mid=1qNOaw59aS8LqJAdR9RRBDRzyP8wFplQ&ehbc=2E312F",
+            "TEODORO SAMPAIO": "https://www.google.com/maps/d/embed?mid=1YebdY_rC85pReWZSzwCM9yv97nG4Y08&ehbc=2E312F",
+            "UBATUBA": "https://www.google.com/maps/d/embed?mid=1W51HDt6pg0jpvxowjw5adsNECCPupcM&ehbc=2E312F"
+        };
+
+        function showMap() {
+            var menu = document.getElementById("menu");
+            var selectedPatio = menu.options[menu.selectedIndex].value;
+            var mapContainer = document.getElementById("mapContainer");
+
+            // Remova o mapa existente, se houver
+            while (mapContainer.firstChild) {
+                mapContainer.removeChild(mapContainer.firstChild);
+            }
+
+            // Crie um novo iframe com base no pátio selecionado
+            if (selectedPatio !== "") {
+                var iframe = document.createElement("iframe");
+                iframe.src = mapURLs[selectedPatio] || "";
+                iframe.width = "800";
+                iframe.height = "600";
+
+                mapContainer.appendChild(iframe);
+            }
+        }
+        var selectElement = document.getElementById('mySelect');
+
+        selectElement.addEventListener('mouseover', function (event) {
+            var target = event.target;
+            if (target.tagName.toLowerCase() === 'option') {
+                // Adiciona a classe de destaque à opção sobre a qual o mouse está passando
+                target.classList.add('highlight');
+            }
+        });
+
+        selectElement.addEventListener('mouseout', function (event) {
+            var target = event.target;
+            if (target.tagName.toLowerCase() === 'option') {
+                // Remove a classe de destaque quando o mouse sai da opção
+                target.classList.remove('highlight');
+            }
+        });
+    </script>
+</body>
+
+</html>

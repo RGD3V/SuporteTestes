@@ -1,0 +1,68 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: calc(100vh - 128px);
+    background-image: linear-gradient(to bottom, #f18407, #e68e2a, #ebab62);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+label {
+    display: inline-block;
+    padding: 4px;
+    background-color: #ebab62;
+    border-radius: 7px 0px 0px 7px;
+}
+
+select {
+    padding: 4px;
+    border: 2.5px solid #fda40028;
+    border-radius: 0px 7px 7px 0px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+select:hover,
+select:focus {
+    border-color: #fda500;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#mapContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* select:hover option {
+    background-color: #fda500;
+} */
+
+a {
+    text-decoration: none;
+    background-color: orangered;
+    color: white;
+    box-shadow: 0px 0px 5px rgb(63, 63, 63);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 25px;
+}
+
+span {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #f18407;
+    padding: 3px;
+    border-radius: 5px;
+}
